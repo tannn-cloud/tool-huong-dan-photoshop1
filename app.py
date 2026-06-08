@@ -22,7 +22,7 @@ with col1:
     ])
     product_size_type = st.selectbox("Kích thước sản phẩm (Product Size):", [
         "Normal (Cho phép co kéo ảnh)",
-        "Keep original product size (GIỮ NGUYÊN CỠ SẢN PHẨM - KHÔNG CO KÉOẢNH)"
+        "Keep original product size (GIỮ NGUYÊN CỠ SẢN PHẨM - KHÔNG CO KÉO ẢNH)"
     ])
 
 with col2:
@@ -63,7 +63,7 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
     # Bước 2: Khóa sản phẩm làm gốc cố định
     st.markdown("#### 🎯 BƯỚC 2: CỐ ĐỊNH KHỐI SẢN PHẨM & GỌI VÙNG CHỌN GỐC")
     
-    if product_size_type == "Keep original product size (GIỮ NGUYÊN CỠ SẢN PHẨM - KHÔNG CO KÉOẢNH)":
+    if product_size_type == "Keep original product size (GIỮ NGUYÊN CỠ SẢN PHẨM - KHÔNG CO KÉO ẢNH)":
         st.error("🚨 LƯU Ý ĐẶC BIỆT: Hệ thống yêu cầu 'Keep original product size' ➡️ TUYỆT ĐỐI KHÔNG DÙNG CTRL+T TRÊN LỚP ẢNH SẢN PHẨM. Giữ nguyên kích cỡ ban đầu của ảnh gốc!")
     else:
         st.success("QUY TẮC: Giữ sản phẩm đứng yên để không lệch bóng đổ. Bắt Stencil di chuyển theo sản phẩm!")
@@ -87,7 +87,6 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
     
     st.warning("⚠️ QUY TẮC PHẢI THUỘC LÒNG: Khi dùng lệnh `Ctrl + T` để co kéo, phải kéo ở 4 góc góc ảnh để giữ nguyên tỷ lệ, TUYỆT ĐỐI KHÔNG làm bóp méo, hư hình dáng sản phẩm!")
     
-    # CHÈN MẸO TÂM ĐỊNH VỊ + NÚT ALT CỦA BẠN VÀO ĐÂY
     st.success("💡 MẸO CAO THỦ GIÚP CĂN ĐÚNG LỀ 100%: Khi bấm `Ctrl + T`, hãy bật và di chuyển cái nút tâm định vị (Reference Point) đặt vào vị trí cạnh đã chuẩn lề/chuẩn biên trước. Sau đó, nhấn giữ phím **Alt** kết hợp kéo góc ảnh đối diện. Ảnh sẽ phóng to/thu nhỏ dồn về phía tâm đó, giúp cạnh còn lại chạm khít vào đường lề (Margin) bên kia cực kỳ chính xác!")
 
     # Nếu có yêu cầu làm lề thì nhắc mở Guides
@@ -95,10 +94,8 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
         st.write(f"- 💡 **MỞ ĐƯỜNG GIÓNG MARGIN:** Vào menu **View > New Guide Layout** (hoặc tạo Guides thủ công) để mở các thước gióng chắn cạnh theo đúng thông số yêu cầu: **{margin_type}**.")
 
     # Kiểm tra xem có bị khóa kích thước sản phẩm không
-    if product_size_type == "Keep original product size (GIỮ NGUYÊN CỠ SẢN PHẨM - KHÔNG CO KÉOẢNH)":
-        st.critical("🛑 ĐANG BẬT CHẾ ĐỘ 'KEEP ORIGINAL PRODUCT SIZE':")
-        st.write("- **TUYỆT ĐỐI KHÔNG CO KÉO SẢN PHẨM.**")
-        st.write("- **Hành động:** Bạn chỉ được phép bấm chọn duy nhất layer **Stencil**, dùng lệnh `Ctrl + T` co kéo gá miếng Stencil này sao cho vừa khít theo phom sản phẩm/hoặc đụng các đường Guides, giữ khối ảnh sản phẩm nguyên vẹn hoàn toàn.")
+    if product_size_type == "Keep original product size (GIỮ NGUYÊN CỠ SẢN PHẨM - KHÔNG CO KÉO ẢNH)":
+        st.error("🛑 ĐANG BẬT CHẾ ĐỘ 'KEEP ORIGINAL PRODUCT SIZE':\n\n- **TUYỆT ĐỐI KHÔNG CO KÉO SẢN PHẨM.**\n\n- **Hành động:** Bạn chỉ được phép bấm chọn duy nhất layer **Stencil**, dùng lệnh `Ctrl + T` co kéo gá miếng Stencil này sao cho vừa khít theo phom sản phẩm/hoặc đụng các đường Guides, giữ khối ảnh sản phẩm nguyên vẹn hoàn toàn.")
     else:
         # Nếu được co kéo ảnh bình thường, áp dụng logic thế ảnh cắt cạnh
         if image_status == "Ảnh nguyên vẹn (Không bị cắt)":
