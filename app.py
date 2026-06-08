@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Tool Hướng Dẫn Photoshop", page_icon="🖥️", layout="centered")
 
 st.title("🖥️ HỆ THỐNG ĐIỀU PHỐI QUY TRÌNH PHOTOSHOP")
-st.markdown("#### *Cẩm nang xử lý Stencil, Alignment & Lấy Sản phẩm làm gốc dành cho Newbie*")
+st.markdown("#### *Cẩm nang xử lý Stencil, Alignment & Căn theo đường gióng Margin dành cho Newbie*")
 st.write("---")
 
 # 1. PHẦN NHẬP DỮ LIỆU ĐẦU VÀO
@@ -60,7 +60,7 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
     st.markdown("#### 🎯 BƯỚC 2: CỐ ĐỊNH KHỐI SẢN PHẨM & GỌI VÙNG CHỌN GỐC")
     st.success("QUY TẮC: Giữ sản phẩm đứng yên để không lệch bóng đổ. Bắt Stencil di chuyển theo sản phẩm!")
     st.write("1. **Khóa liên kết sản phẩm:** Nhấn giữ `Ctrl` chọn đồng thời 3 layer: **Product**, **Retouch BG**, và **Shadow** (nếu có) $\rightarrow$ Click chuột phải chọn **Link Layers** (đảm bảo khối này đứng im, đồng bộ cùng nhau).")
-    st.write("2. **Gọi vùng chọn của Sản phẩm làm gốc:** Nhấn giữ phím `Ctrl` + click chuột trái vào ô ảnh thu nhỏ (**Thumbnail**) của layer **Product** để tạo đường kiến bò bao quanh sản phẩm gốc.")
+    st.write("2. **Gặp vùng chọn của Sản phẩm làm gốc:** Nhấn giữ phím `Ctrl` + click chuột trái vào ô ảnh thu nhỏ (**Thumbnail**) của layer **Product** để tạo đường kiến bò bao quanh sản phẩm gốc.")
 
     # Bước 3: Căn Stencil chạy theo Sản phẩm
     st.markdown("#### 🟦 BƯỚC 3: CĂN LAYER STENCIL THEO VÙNG CHỌN SẢN PHẨM")
@@ -73,36 +73,42 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
     elif "Horizontal" in alignment:
         st.info("➡️ Bấm nút **Align Horizontal Centers** để layer STENCIL tự động căn giữa theo CHIỀU NGANG của sản phẩm.")
 
-    # Bước 4: Luật co kéo Canvas/Lề sau khi đã căn khớp
-    st.markdown("#### 🟨 BƯỚC 4: LUẬT XỬ LÝ CẠNH CẮT & LỀ (MARGINS)")
-    st.write("- Sau khi Stencil đã căn giữa theo sản phẩm thành công, tiến hành xử lý lề dựa trên thế ảnh gốc:")
+    # Bước 4: Luật co kéo ảnh theo đường gióng Guides (Margin) - ĐÃ SỬA CHUẨN XÁC THEO Ý BẠN
+    st.markdown("#### 🟨 BƯỚC 4: LUẬT CO KÉO SẢN PHẨM THEO ĐƯỜNG GIÓNG (MARGIN)")
     
+    # Hướng dẫn tạo đường gióng trước
+    if "Margin not set" not in margin_type:
+        st.warning(f"💡 **THAO TÁC TRƯỚC TIÊN:** Vào menu tạo đường gióng (**View > New Guide Layout** hoặc nhập thông số trực tiếp) để mở các đường **Guides (Margin)** theo đúng yêu cầu hệ thống: **{margin_type}**.")
+
     if image_status == "Ảnh nguyên vẹn (Không bị cắt)":
         if "Margin not set" in margin_type:
-            st.write("- **Quy tắc:** Co kéo toàn bộ Canvas nằm gọn trong khung Stencil đã căn và đưa vào giữa.")
+            st.write("- **Cách làm:** Co kéo toàn bộ ảnh sao cho nằm gọn gàng trong khung Stencil đã căn giữa.")
         else:
-            st.write(f"- **Quy tắc:** Thiết lập lề chuẩn xác theo thông số yêu cầu: **{margin_type}**.")
+            st.write("- **Cách làm:** Nhấn `Ctrl + T` co kéo khối sản phẩm sao cho **TẤT CẢ CÁC CẠNH đều đụng vừa khít vào các đường Guides (Margin)** vừa mở.")
             
     elif image_status == "Ảnh bị CẮT 1 CẠNH":
-        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 1 CẠNH (Ví dụ cụt đuôi bên phải)")
-        st.write("- **Quy tắc:** KHÔNG làm lề cho cạnh bị cắt.")
-        st.write("- **Cách làm tay:** Dùng `Ctrl + T` co kéo Canvas/Khung hình sao cho **cạnh bị cắt chạm vừa khít/bo sát vào biên của Canvas**. Cạnh đối diện không bị cắt thì lùi vào trong tự nhiên.")
+        st.error("🚨 THẾ ẢNH: BỊ CẮT MẤT 1 CẠNH")
+        st.write("- ➡️ **Cạnh bị cắt cụt:** Dùng `Ctrl + T` kéo cho cạnh cụt này **tràn hẳn ra ngoài mép biên Canvas** (Mép ngoài cùng của file ảnh).")
+        st.write("- ➡️ **Các cạnh KHÔNG bị cắt:** Co kéo sao cho cạnh đó **đụng vừa khít vào đường Guides (Margin)** quy định.")
 
     elif image_status == "Ảnh bị CẮT 2 CẠNH LIỀN KỀ":
-        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH LIỀN KỀ")
-        st.write("- **Quy tắc:** Chỉ làm lề cho **1 trong 2 cạnh còn nguyên vẹn** (cạnh không bị cắt). Kéo sát các cạnh bị cắt ra biên Canvas.")
+        st.error("🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH LIỀN KỀ")
+        st.write("- ➡️ **2 cạnh bị cắt cụt:** Bắt buộc kéo **tràn hẳn ra ngoài mép biên Canvas**.")
+        st.write("- ➡️ **Các cạnh KHÔNG bị cắt:** Điều chỉnh sao cho **đụng vừa khít vào đường Guides (Margin)**.")
 
     elif image_status == "Ảnh bị CẮT 2 CẠNH ĐỐI DIỆN":
-        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH ĐỐI DIỆN")
-        st.write("- **Quy tắc:** KHÔNG làm lề cho cả 2 cạnh còn lại.")
+        st.error("🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH ĐỐI DIỆN")
+        st.write("- ➡️ **2 cạnh bị cắt đối diện:** TUYỆT ĐỐI KHÔNG LÀM LỀ. Nhấn `Ctrl + T` kéo lớn ảnh ra, bắt **cả 2 cạnh bị cắt cụt này phải TRÀN RA và CHẠM VỪA KHÍT vào mép biên ngoài cùng của Canvas** (Không được dừng ở đường Guides).")
+        st.write("- ➡️ **Các cạnh còn lại (Không bị cắt):** Nếu có yêu cầu làm lề, điều chỉnh cho chúng **đụng sát vào đường Guides (Margin)**.")
 
     elif image_status == "Ảnh bị CẮT 3 CẠNH":
-        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 3 CẠNH")
-        st.write("- **Quy tắc:** KHÔNG làm lề cho duy nhất cạnh còn lại. Ưu tiên giữ viền cạnh không bị cắt.")
+        st.error("🚨 THẾ ẢNH: BỊ CẮT 3 CẠNH")
+        st.write("- ➡️ **3 cạnh bị cắt cụt:** Kéo cho **tràn hết ra ngoài rìa biên Canvas**.")
+        st.write("- ➡️ **Duy nhất 1 cạnh KHÔNG bị cắt:** Điều chỉnh cho cạnh nguyên vẹn này **đụng sát vào đường Guides (Margin)**.")
 
     elif image_status == "Ảnh bị CẮT 4 CẠNH":
-        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT CẢ 4 CẠNH")
-        st.write("- **Quy tắc:** Dùng công cụ Crop (C) cắt lẹm bớt vào trong sản phẩm, tập trung giữ lại khu vực nổi bật có nhiều chi tiết nhất.")
+        st.error("🚨 THẾ ẢNH: BỊ CẮT CẢ 4 CẠNH")
+        st.write("- **Cách làm:** Bỏ qua các đường Guides. Dùng công cụ Crop (C) cắt lẹm thẳng vào trong sản phẩm, ép toàn bộ 4 cạnh tràn biên Canvas và tập trung giữ lại khu vực nổi bật nhất ở trung tâm.")
 
     # Bước 5: Chỉ định Action bổ trợ hở trắng
     st.markdown("#### 🟥 BƯỚC 5: KIỂM TRA NỀN & BẬT ACTION HỖ TRỢ")
