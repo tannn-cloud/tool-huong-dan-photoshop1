@@ -86,6 +86,9 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
     st.markdown("#### 🟨 BƯỚC 4: LUẬT CO KÉO SẢN PHẨM THEO ĐƯỜNG GIÓNG (MARGIN)")
     
     st.warning("⚠️ QUY TẮC PHẢI THUỘC LÒNG: Khi dùng lệnh `Ctrl + T` để co kéo, phải kéo ở 4 góc góc ảnh để giữ nguyên tỷ lệ, TUYỆT ĐỐI KHÔNG làm bóp méo, hư hình dáng sản phẩm!")
+    
+    # CHÈN MẸO TÂM ĐỊNH VỊ + NÚT ALT CỦA BẠN VÀO ĐÂY
+    st.success("💡 MẸO CAO THỦ GIÚP CĂN ĐÚNG LỀ 100%: Khi bấm `Ctrl + T`, hãy bật và di chuyển cái nút tâm định vị (Reference Point) đặt vào vị trí cạnh đã chuẩn lề/chuẩn biên trước. Sau đó, nhấn giữ phím **Alt** kết hợp kéo góc ảnh đối diện. Ảnh sẽ phóng to/thu nhỏ dồn về phía tâm đó, giúp cạnh còn lại chạm khít vào đường lề (Margin) bên kia cực kỳ chính xác!")
 
     # Nếu có yêu cầu làm lề thì nhắc mở Guides
     if "Margin not set" not in margin_type:
@@ -107,22 +110,22 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
         elif image_status == "Ảnh bị CẮT 1 CẠNH":
             st.error("🚨 THẾ ẢNH: BỊ CẮT MẤT 1 CẠNH")
             st.write("- ➡️ **Cạnh bị cắt cụt:** Dùng `Ctrl + T` kéo lớn ảnh đồng tỷ lệ cho cạnh cụt này **tràn hẳn ra ngoài mép biên Canvas** (Mép ngoài cùng của file ảnh).")
-            st.write("- ➡️ **Các cạnh KHÔNG bị cắt:** Điều chỉnh gá sát sao cho cạnh đó **đụng vừa khít vào đường Guides (Margin)** quy định.")
+            st.write("- ➡️ **Các cạnh KHÔNG bị cắt:** Áp dụng mẹo ghim tâm định vị, giữ `Alt` kéo cho cạnh không bị cắt **đụng vừa khít vào đường Guides (Margin)** quy định.")
 
         elif image_status == "Ảnh bị CẮT 2 CẠNH LIỀN KỀ":
             st.error("🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH LIỀN KỀ")
             st.write("- ➡️ **2 cạnh bị cắt cụt:** Kéo **tràn hẳn ra ngoài mép biên ngoài cùng của Canvas**.")
-            st.write("- ➡️ **Các cạnh KHÔNG bị cắt còn lại:** Điều chỉnh sao cho **đụng vừa khít vào đường Guides (Margin)** để bảo đảm thẩm mỹ.")
+            st.write("- ➡️ **Các cạnh KHÔNG bị cắt còn lại:** Dùng mẹo giữ `Alt` điều chỉnh sao cho **đụng vừa khít vào đường Guides (Margin)** để bảo đảm thẩm mỹ.")
 
         elif image_status == "Ảnh bị CẮT 2 CẠNH ĐỐI DIỆN":
             st.error("🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH ĐỐI DIỆN")
-            st.write("- ➡️ **2 cạnh bị cắt đối diện:** TUYỆT ĐỐI KHÔNG ĐƯỢC LÀM LỀ Ơ CHỖ CỤT. Nhấn `Ctrl + T` phóng lớn ảnh, bắt **cả 2 cạnh bị cắt cụt này phải TRÀN RA và CHẠM VỪA KHÍT vào mép biên Canvas**.")
-            st.write("- ➡️ **Các cạnh còn lại (Không bị cắt):** Nếu hệ thống yêu cầu, điều chỉnh cho chúng **đụng sát vào đường Guides (Margin)**.")
+            st.write("- ➡️ **2 cạnh bị cắt đối diện:** TUYỆT ĐỐI KHÔNG ĐƯỢC LÀM LỀ Ơ CHỖ CỤT. Nhấn `Ctrl + T` kéo lớn ảnh, bắt **cả 2 cạnh bị cắt cụt này phải TRÀN RA và CHẠM VỪA KHÍT vào mép biên Canvas**.")
+            st.write("- ➡️ **Các cạnh còn lại (Không bị cắt):** Nếu hệ thống yêu cầu, điều chỉnh ghim tâm giữ `Alt` cho chúng **đụng sát vào đường Guides (Margin)**.")
 
         elif image_status == "Ảnh bị CẮT 3 CẠNH":
             st.error("🚨 THẾ ẢNH: BỊ CẮT 3 CẠNH")
             st.write("- ➡️ **3 cạnh bị cắt cụt:** Kéo cho **tràn hết ra ngoài rìa biên Canvas** để giấu vết nấc cụt.")
-            st.write("- ➡️ **Duy nhất 1 cạnh KHÔNG bị cắt:** Nhấn `Ctrl + T` giữ tỷ lệ chuẩn sao cho cạnh nguyên vẹn này **đụng sát vào đường Guides (Margin)**.")
+            st.write("- ➡️ **Duy nhất 1 cạnh KHÔNG bị cắt:** Nhấn `Ctrl + T` ghim tâm định vị ở biên Canvas, giữ `Alt` kéo góc ảnh sao cho cạnh nguyên vẹn này **đụng sát vào đường Guides (Margin)**.")
 
         elif image_status == "Ảnh bị CẮT 4 CẠNH":
             st.error("🚨 THẾ ẢNH: BỊ CẮT CẢ 4 CẠNH")
