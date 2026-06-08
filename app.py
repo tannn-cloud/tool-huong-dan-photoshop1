@@ -75,36 +75,36 @@ if st.button("🚀 XUẤT HƯỚNG DẪN CÁCH LÀM (BẤM VÀO ĐÂY)", type="p
             st.write(f"- **Quy tắc:** Tạo khoảng cách lề an toàn chuẩn xác theo thông số yêu cầu: **{margin_type}**.")
             
     elif image_status == "Ảnh bị CẮT 1 CẠNH":
-        st.error("🚨 THẾ ẢNH: BỊ CẮT 1 CẠNH (Ví dụ cụt đuôi bên phải)")
+        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 1 CẠNH (Ví dụ cụt đuôi bên phải)")
         st.write("- **Quy tắc cốt lõi:** KHÔNG làm lề cho cạnh bị cắt.")
         st.write("- **Cách làm tay:** Nhấn `Ctrl + T` phóng to sản phẩm lên sao cho **cạnh bị cắt chạm vừa khít/bo sát vào biên tương ứng của Canvas**. Cạnh đối diện không bị cắt thì lùi vào trong tự nhiên.")
         if "Margin not set" in margin_type:
             st.write("- *Lưu ý nâng cao:* Ưu tiên căn theo sản phẩm, co kéo toàn bộ Canva nằm trong khung Stencil.")
 
     elif image_status == "Ảnh bị CẮT 2 CẠNH LIỀN KỀ":
-        st.error("🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH LIỀN KỀ")
+        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH LIỀN KỀ")
         st.write("- **Quy tắc cốt lõi:** Chỉ làm lề cho **1 trong 2 cạnh còn nguyên vẹn** (cạnh không bị cắt).")
         st.write("- **Cách làm tay:** Đẩy 2 cạnh bị cắt ra chạm sát biên Canvas.")
 
     elif image_status == "Ảnh bị CẮT 2 CẠNH ĐỐI DIỆN":
-        st.error("🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH ĐỐI DIỆN")
+        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 2 CẠNH ĐỐI DIỆN")
         st.write("- **Quy tắc cốt lõi:** KHÔNG làm lề cho cả 2 cạnh còn lại.")
 
     elif image_status == "Ảnh bị CẮT 3 CẠNH":
-        st.error("🚨 THẾ ẢNH: BỊ CẮT 3 CẠNH")
+        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT 3 CẠNH")
         st.write("- **Quy tắc cốt lõi:** KHÔNG làm lề cho duy nhất cạnh còn lại.")
         st.write("- **Cách làm tay:** Ưu tiên lấy diện tích sản phẩm nhiều nhất và giữ phần viền của cạnh không bị cắt.")
 
     elif image_status == "Ảnh bị CẮT 4 CẠNH":
-        st.error("🚨 THẾ ẢNH: BỊ CẮT CẢ 4 CẠNH")
+        st.markdown("##### 🚨 THẾ ẢNH: BỊ CẮT CẢ 4 CẠNH")
         st.write("- **Quy tắc cốt lõi:** Sử dụng công cụ Crop (C) cắt lẹm bớt vào trong sản phẩm.")
         st.write("- **Cách làm tay:** Tập trung giữ lại khu vực nổi bật nhất và có nhiều chi tiết đắt giá của sản phẩm.")
 
     # Bước 4: Chỉ định Action bổ trợ hở trắng
     st.markdown("#### 🟥 BƯỚC 4: KIỂM TRA NỀN & BẬT ACTION HỖ TRỢ")
     if "Yes" in bg_check or image_status != "Ảnh nguyên vẹn (Không bị cắt)":
-        st.critical("⚠️ PHÁT HIỆN NỀN BỊ THIẾU HOẶC HỞ TRẮNG DO CO KÉO CẠNH CẮT!")
-        st.success("➡️ **HÀNH ĐỘNG BẮT BUỘC:** Sau khi co kéo xong, nhân viên phải chạy ngay **'Action chống hở trắng cạnh cắt'** để xử lý mượt mà phần rìa biên!")
+        st.error("⚠️ PHÁT HIỆN NỀN BỊ THIẾU HOẶC HỞ TRẮNG DO CO KÉO CẠNH CẮT!")
+        st.success("➡️ **HÀNH ĐỘNG BẮT BUỘC:** Sau khi co kéo xong, nhân viên phải chạy ngay **'Action chống hở trắng cạnh cắt'** để xử lý mượt mờ phần rìa biên!")
     else:
         st.write("- Kiểm tra lại bằng mắt, nếu phông nền đã khít và đủ thì không cần chạy Action hỗ trợ.")
 
